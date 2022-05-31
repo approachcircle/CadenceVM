@@ -13,7 +13,6 @@ namespace CadenceVM
         string fileText;
         static string[] tokens = Array.Empty<string>();
         static int tokenPointer;
-        static Boolean EOF;
 
         public Parser(string filename, int pointer = -1)
         {
@@ -37,10 +36,6 @@ namespace CadenceVM
         public static void Advance()
         {
             tokenPointer++;
-            if (tokenPointer >= tokens.Length)
-            {
-                EOF = true;
-            }
         }
 
         public static Token GetToken()
