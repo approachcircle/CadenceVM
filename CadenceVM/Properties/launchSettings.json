@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CadenceVM": {
+      "commandName": "Project",
+      "commandLineArgs": "file.casm"
+    }
+  }
+}
