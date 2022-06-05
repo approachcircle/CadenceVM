@@ -25,7 +25,7 @@ namespace CadenceVM
             }
             if (!int.TryParse(tokenString, out int tokenValue))
             {
-                Logger.Log(Level.Error, $"token number: {Parser.GetTokenPointer() + 1}");
+                Logger.Log(Level.Error, $"token number: {Parser.GetTokenPointer() + 1} is malformed");
                 Environment.Exit(1);
                 return Token.HALT;
             }
