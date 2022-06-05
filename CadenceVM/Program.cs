@@ -8,14 +8,16 @@
             if (args.Length > 0)
             {
                 filename = args[0];
-            } else
+            }
+            else
             {
                 Logger.Log(Level.Error, "you must provide a bytecode file to interpret");
                 Environment.Exit(1);
                 return;
             }
-            Parser parser = new Parser(filename);
+            Parser parser = new(filename);
             parser.Parse();
+            ExecutionTimer.Start();
             while (true)
             {
                 Parser.Advance();

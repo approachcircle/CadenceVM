@@ -14,6 +14,10 @@ namespace CadenceVM
             switch (token)
             {
                 case Token.HALT:
+                    ExecutionTimer.Stop();
+                    TimeSpan elapsed = ExecutionTimer.GetElapsed();
+                    string elapsedTime = string.Format("{0:00}s {1:00}ms", elapsed.Seconds, elapsed.Milliseconds);
+                    Logger.Log(Level.Info, $"finished execution in {elapsedTime}");
                     Environment.Exit(0);
                     break;
                 case Token.PRINT:

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Diagnostics;
 
 namespace CadenceVM
 {
@@ -29,8 +30,13 @@ namespace CadenceVM
 
         public void Parse()
         {
+            Stopwatch stopwatch = Stopwatch.StartNew();
             this.fileText = File.ReadAllText(this.fileName);
             tokens = this.fileText.Split(";");
+            stopwatch.Stop();
+            TimeSpan elapsed = stopwatch.Elapsed;
+            string elapsedTime = string.Format("{0:00}s {1:00}ms", elapsed.Seconds, elapsed.Milliseconds);
+            Logger.Log(Level.Info, $"parsed {tokens.Length - 1} tokens in {elapsedTime}");
         }
 
         public static void Advance()
